@@ -4,6 +4,7 @@ const PlayHTAPI = require('playht');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const path = require('path'); // Import path module
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +20,8 @@ PlayHTAPI.init({
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
+
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.send("Hello");
